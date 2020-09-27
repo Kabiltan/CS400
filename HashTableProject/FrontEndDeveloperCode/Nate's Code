@@ -1,45 +1,60 @@
+// --== CS400 File Header Information ==--
+// Name: Nathaniel Tate
+// Email: ntate@wisc.edu
+// Team: MB
+// Role: Front End Developer
+// TA: Harit
+// Lecturer: Gary Dahl
+// Notes to Grader: <optional extra notes>
 
 import java.util.*;
 
 public class courseGPAUI {
-    private HashTableMap<String, Double> hashTable;
+    private static HashTableMap<String, Double> hashTable = new HashTableMap<>();
 
     public static void main(String[] args) {
         String className;
         Double classGPA;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a command:");
         listCommands();
+        System.out.println("Enter a command:");
         while (!scanner.hasNext("quit")) {  //Continue running until the user enters the command quit
             String userInput = scanner.next();
-            if (userInput == "createClass") {   //User entered the createClass command
-                System.out.println("Enter course name");
+            if (userInput.equals("createClass")) {   //User entered the createClass command
+                System.out.println("Enter course name and course GPA");
                 className = scanner.next();
-                System.out.println("Enter course GPA");
                 classGPA = scanner.nextDouble();
                 createClass(className, classGPA);
-            } else if (userInput == "updateClass") {    //User entered the updateClass command
-                System.out.println("Enter course name");
+            } else if (userInput.equals("updateClass")) {    //User entered the updateClass command
+                System.out.println("Enter course name and course GPA:");
                 className = scanner.next();
-                System.out.println("Enter course GPA");
                 classGPA = scanner.nextDouble();
                 updateClass(className, classGPA);
-            } else if (userInput == "getClassGPA") {    //User entered the getClassGPA command
-                System.out.println("Enter course name");
+            } else if (userInput.equals("getClassGPA")) {    //User entered the getClassGPA command
+                System.out.println("Enter course name:");
                 className = scanner.next();
                 getClassGPA(className);
-            } else if (userInput == "commands") {   //User entered the commands command
+            } else if (userInput.equals("commands")) {   //User entered the commands command
                 listCommands();
             } else {    //User entered an invalid command
                 System.out.println("Invalid command, please try again");
             }
         }
+        System.out.println("Closing database, thank you.");
         scanner.close();
     }
     
-    public static void createClass(String className, Double classGPA) {}
-    public static void updateClass(String className, Double classGPA) {}
+    public static void createClass(String className, Double classGPA) {
+        hashTable.put(className, classGPA);
+        System.out.println("Added " + className + " with an average GPA of " + classGPA);
+    }
+    public static void updateClass(String className, Double classGPA) {
+        hashTable.remove(className);
+        hashTable.put(className, classGPA);
+        System.out.println("Updated " + className + "'s average GPA to " + classGPA);
+    }
     public static void getClassGPA(String className) {
+        System.out.println("The average GPA for " + className + " is " + hashTable.get(className));
     }
 
     public static void listCommands() {
