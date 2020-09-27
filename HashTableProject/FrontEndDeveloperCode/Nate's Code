@@ -1,0 +1,53 @@
+
+import java.util.*;
+
+public class courseGPAUI {
+    private HashTableMap<String, Double> hashTable;
+
+    public static void main(String[] args) {
+        String className;
+        Double classGPA;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a command:");
+        listCommands();
+        while (!scanner.hasNext("quit")) {  //Continue running until the user enters the command quit
+            String userInput = scanner.next();
+            if (userInput == "createClass") {   //User entered the createClass command
+                System.out.println("Enter course name");
+                className = scanner.next();
+                System.out.println("Enter course GPA");
+                classGPA = scanner.nextDouble();
+                createClass(className, classGPA);
+            } else if (userInput == "updateClass") {    //User entered the updateClass command
+                System.out.println("Enter course name");
+                className = scanner.next();
+                System.out.println("Enter course GPA");
+                classGPA = scanner.nextDouble();
+                updateClass(className, classGPA);
+            } else if (userInput == "getClassGPA") {    //User entered the getClassGPA command
+                System.out.println("Enter course name");
+                className = scanner.next();
+                getClassGPA(className);
+            } else if (userInput == "commands") {   //User entered the commands command
+                listCommands();
+            } else {    //User entered an invalid command
+                System.out.println("Invalid command, please try again");
+            }
+        }
+        scanner.close();
+    }
+    
+    public static void createClass(String className, Double classGPA) {}
+    public static void updateClass(String className, Double classGPA) {}
+    public static void getClassGPA(String className) {
+    }
+
+    public static void listCommands() {
+        System.out.println("Commands:");
+        System.out.println("createClass - Enter a course name and it's average GPA to be stored within the database");
+        System.out.println("updateClass - Enter a course name and update it's average GPA that is stored within the database");
+        System.out.println("getClassGPA - Enter a course name and receive it's average GPA that is stored within the database");
+        System.out.println("commands - Displays the list of commands");
+        System.out.println("quit - Quit");
+    }
+}
