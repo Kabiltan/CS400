@@ -45,15 +45,38 @@ public class courseGPAUI {
     }
     
     public static void createClass(String className, Double classGPA) {
+        if (hashTable.containsKey(className)) {
+            System.out.println("Error: The class name that was entered already exists within the database if you are looking" 
+            + "to update the GPA associated to it use the updateClass command");
+            return;
+        }
+        if (classGPA > 4.0 || classGPA < 0.0) {
+            System.out.println("Error: The GPA entered is outside of possible range of GPAs at UW-Madison");
+            return;
+        }
         hashTable.put(className, classGPA);
         System.out.println("Added " + className + " with an average GPA of " + classGPA);
     }
     public static void updateClass(String className, Double classGPA) {
+        if (!hashTable.containsKey(className)) {
+            System.out.println("Error: There is not class within the database that has that name, please check your spelling" 
+            + "or use the command createClass instead");
+            return;
+        }
+        if (classGPA > 4.0 || classGPA < 0.0) {
+            System.out.println("Error: The GPA entered is outside of possible range of GPAs at UW-Madison");
+            return;
+        }
         hashTable.remove(className);
         hashTable.put(className, classGPA);
         System.out.println("Updated " + className + "'s average GPA to " + classGPA);
     }
     public static void getClassGPA(String className) {
+        if (!hashTable.containsKey(className)) {
+            System.out.println("Error: There is not class within the database that has that name, please check your spelling" 
+            + "or use the command createClass instead");
+            return;
+        }
         System.out.println("The average GPA for " + className + " is " + hashTable.get(className));
     }
 
