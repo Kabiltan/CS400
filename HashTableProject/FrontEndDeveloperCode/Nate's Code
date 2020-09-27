@@ -45,12 +45,12 @@ public class courseGPAUI {
     }
     
     public static void createClass(String className, Double classGPA) {
-        if (hashTable.containsKey(className)) {
+        if (hashTable.containsKey(className)) {     //Inform the user if the className passed already exists within the database
             System.out.println("Error: The class name that was entered already exists within the database if you are looking" 
             + "to update the GPA associated to it use the updateClass command");
             return;
         }
-        if (classGPA > 4.0 || classGPA < 0.0) {
+        if (classGPA > 4.0 || classGPA < 0.0) {     //Inform the user that the GPA that they passed is out of bounds
             System.out.println("Error: The GPA entered is outside of possible range of GPAs at UW-Madison");
             return;
         }
@@ -58,12 +58,12 @@ public class courseGPAUI {
         System.out.println("Added " + className + " with an average GPA of " + classGPA);
     }
     public static void updateClass(String className, Double classGPA) {
-        if (!hashTable.containsKey(className)) {
+        if (!hashTable.containsKey(className)) {    //Inform the user that there is no class within the database that has that name
             System.out.println("Error: There is not class within the database that has that name, please check your spelling" 
             + "or use the command createClass instead");
             return;
         }
-        if (classGPA > 4.0 || classGPA < 0.0) {
+        if (classGPA > 4.0 || classGPA < 0.0) {     //Inform the user that the GPA that they passed is out of bounds
             System.out.println("Error: The GPA entered is outside of possible range of GPAs at UW-Madison");
             return;
         }
@@ -72,7 +72,7 @@ public class courseGPAUI {
         System.out.println("Updated " + className + "'s average GPA to " + classGPA);
     }
     public static void getClassGPA(String className) {
-        if (!hashTable.containsKey(className)) {
+        if (!hashTable.containsKey(className)) {   //Inform the user that there is no class within the database that has that name 
             System.out.println("Error: There is not class within the database that has that name, please check your spelling" 
             + "or use the command createClass instead");
             return;
