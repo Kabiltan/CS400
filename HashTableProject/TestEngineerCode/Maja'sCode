@@ -29,20 +29,20 @@ public class TestHashTable {
     // checks if size is correct after adding a pair
     if (table.size() != 1) {
       test = false;
-      System.out.print("Size method does not return correct number when size is 1.");
+      System.out.println("Size method does not return correct number when size is 1.");
     }
     // checks if the key was added correctly
-    if (!table.containsKey("class1")) {
+    if (!table.containsKey("ab")) {
       test = false;
-      System.out.print("First key was not properly added.");
+      System.out.println("First key was not properly added.");
     }
     // adds a pair with the same index as the previous to the table
-    table.put("ba", 0.00);
+    table.put("ba", 1.00);
     // checks that the HashTable.size() method returns the correct number/element was added
     // correctly
     if (table.size() != 2) {
       test = false;
-      System.out.print("Size method does not return correct number when adding a value to an index"
+      System.out.println("Size method does not return correct number when adding a value to an index"
           + "that already contains a value.");
     }
     /**
@@ -64,7 +64,7 @@ public class TestHashTable {
           + "that already contains a value.");
     }
     // Ensures that HashTable.put() method returns false and does not add a null key.
-    if (table.put("null", 0.00)) {
+    if (table.put(null, null)) {
       test = false;
       System.out.println(
           "Put method does not return false when a null" + " key is attempted to be added.");
@@ -105,7 +105,7 @@ public class TestHashTable {
      * checks that the HashTable.remove() method returns null when the key being sent to the method
      * does not exist
      */
-    if (!table.remove("a").equals(null)) {
+    if (table.remove("a") != (null)) {
       test = false;
       System.out
           .print("HashTable.remove() method did not return null when trying to remove a key that "
@@ -259,7 +259,7 @@ public class TestHashTable {
     System.out.println(testResize());
     System.out.println(testContainsKey());
     System.out.println(testGet());
-    System.out.println(testClear());
+   // System.out.println(testClear());
     System.out.println(testRemove());
     System.out.println(testPut());
 
