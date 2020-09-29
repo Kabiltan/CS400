@@ -1,5 +1,5 @@
 
-public class TestHashTableP1 {
+public class TestHashTable {
   /**
    * Tests that the HashTable.put() method is working correctly. Makes sure that when adding pairs,
    * the size updates correctly and the course was added properly.
@@ -9,7 +9,7 @@ public class TestHashTableP1 {
   public static boolean testPut() {
     // Create a new empty hash table
     HashTableMap<String, Double> table = new HashTableMap<String, Double>();
-    boolean test; // initiates boolean that will be used to identify whether tests are passed
+    boolean test = true; // initiates boolean that will be used to identify whether tests are passed
     // adds one pair to the hash table
     table.put("ab", 0.00);
     // checks if size is correct after adding a pair
@@ -67,7 +67,7 @@ public class TestHashTableP1 {
   public static boolean testRemove() {
     // Create a new empty hash table
     HashTableMap<String, Double> table = new HashTableMap<String, Double>();
-    boolean test; // initiates boolean that will be used to identify whether tests are passed
+    boolean test = true; // initiates boolean that will be used to identify whether tests are passed
     // Adds 4 pairs to the table
     table.put("a", 1.00);
     table.put("b", 2.00);
@@ -115,8 +115,9 @@ public class TestHashTableP1 {
   public static boolean testClear() {
     // Create a new empty hash table
     HashTableMap<String, Double> table = new HashTableMap<String, Double>();
-    boolean test; // initiates boolean that will be used to identify whether tests are passed
+    boolean test = true; // initiates boolean that will be used to identify whether tests are passed
     // Adds 2 pairs to the table
+
     table.put("a", 1.00);
     table.put("b", 2.00);
     // clears the table
@@ -132,6 +133,7 @@ public class TestHashTableP1 {
       System.out.println(
           "The keys were not successfully removed by calling the HashTable.clear()" + " method.");
     }
+
     return test;
   }
 
@@ -143,7 +145,7 @@ public class TestHashTableP1 {
   public static boolean testGetClass() {
     // Create a new empty hash table
     HashTableMap<String, Double> table = new HashTableMap<String, Double>();
-    boolean test; // initiates boolean that will be used to identify whether tests are passed
+    boolean test = true; // initiates boolean that will be used to identify whether tests are passed
     // Adds a pair to the table
     table.put("a", 1.00);
     Double val = table.getClass("a");
@@ -175,11 +177,11 @@ public class TestHashTableP1 {
   public static boolean testUpdateClass() {
     // Create a new empty hash table
     HashTableMap<String, Double> table = new HashTableMap<String, Double>();
-    boolean test; // initiates boolean that will be used to identify whether tests are passed
+    boolean test = true; // initiates boolean that will be used to identify whether tests are passed
     // Adds a pair to the table
     table.put("a", 1.00);
     // changes the name of key "a" to "b"
-    table.UpdateClass("a", "b");
+    table.updateClass("a", "b");
     // checks that the new name is now in the table
     if (!table.containsKey("b")) {
       test = false;
@@ -192,7 +194,7 @@ public class TestHashTableP1 {
           .println("The table still contains a key with the name that was supposed to be updated.");
     }
     // attempt to update the name of a key that does not exist
-    table.UpdateClass("c", "d");
+    table.updateClass("c", "d");
     // checks that no key name is changed when a value that doesn't exist is passed
     if (table.containsKey("d")) {
       test = false;
@@ -211,33 +213,33 @@ public class TestHashTableP1 {
   public static boolean testContainsKey() {
     // Create a new empty hash table
     HashTableMap<String, Double> table = new HashTableMap<String, Double>();
-    boolean test; // initiates boolean that will be used to identify whether tests are passed
+    boolean test = true; // initiates boolean that will be used to identify whether tests are passed
     // Adds 4 pairs to the table
     table.put("ab", 1.00);
     table.put("ba", 2.00);
     table.put("c", 3.00);
     table.put("d", 0.00);
     // checks that HashTable.containsKey() returns true when passed values that are in the table
-    if (!table.ContainsKey("c") || !table.ContainsKey("d")) {
+    if (!table.containsKey("c") || !table.containsKey("d")) {
       test = false;
       System.out
           .println("HashTable.containsKey() method did not return true when passed values that"
               + " are in the table");
     }
     // checks that HashTable.containsKey() handles collisions properly
-    if (!table.ContainsKey("ab") || !table.ContainsKey("ba")) {
+    if (!table.containsKey("ab") || !table.containsKey("ba")) {
       test = false;
       System.out.println("HashTable.containsKey() method doesn't handle collisions properly");
     }
     // checks that the HashTable.containsKey() method returns false when passed a string that isn't
     // in the table
-    if (table.ContainsKey("ad")) {
+    if (table.containsKey("ad")) {
       test = false;
       System.out.println("HashTable.containsKey() method returned true when passed a value that"
           + " is not in the table");
     }
     // checks that HashTable.containsKey() returns false when passed a null value
-    if (table.ContainsKey(null)) {
+    if (table.containsKey(null)) {
       test = false;
       System.out.println("HashTable.containsKey() method returned true when passed a null value");
     }
@@ -252,7 +254,7 @@ public class TestHashTableP1 {
   public static boolean testSize() {
     // Create a new empty hash table
     HashTableMap<String, Double> table = new HashTableMap<String, Double>();
-    boolean test; // initiates boolean that will be used to identify whether tests are passed
+    boolean test = true; // initiates boolean that will be used to identify whether tests are passed
     // Adds 4 pairs to the table including collisions
     table.put("ab", 1.00);
     table.put("ba", 2.00);
@@ -262,6 +264,7 @@ public class TestHashTableP1 {
       test = false;
       System.out.println("HashTable.size() did not return the correct number");
     }
+    return test;
   }
 
   public static void main(String[] args) {
