@@ -27,6 +27,7 @@ public class RedBlackTree<T extends Comparable<T>> {
         public Node<T> leftChild; 
         public Node<T> rightChild; 
         public String songName;
+	private int size = 0;
         public boolean isBlack = false;
         public Node(T data) { this.data = data; }
         /**
@@ -78,6 +79,7 @@ public class RedBlackTree<T extends Comparable<T>> {
 
         Node<T> newNode = new Node<>(data);
         newNode.songName = songName;
+	size++;				      
         if(root == null) {
              root = newNode; // add first node to an empty tree
              root.isBlack = true;   // set the root node to be black
@@ -250,23 +252,15 @@ public class RedBlackTree<T extends Comparable<T>> {
      */
     public void clearTree() {
         root = null;
+	size = 0;
     }
 
     /***
-     * This goes through a branch of the tree and counts the black nodes
-     * @return blackCount - the number of black nodes down the left branch
+     * This method accesses the size field of the node class and returns it
+     * @return size - the ammount of nodes within the tree
      */
     public int size() {
-        Node<T> currentNode = root;
-        int blackCount = 0;
-        while(currentNode != null) {
-            if (currentNode.isBlack == true) {
-                blackCount++;
-            }
-            currentNode = currentNode.leftChild;
-        }
-        return blackCount;
-    }
+        return size;
 
     /***
      * This method recursively traverses the tree until either the currentNode's data is equal to 
