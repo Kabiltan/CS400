@@ -328,7 +328,7 @@ public class RedBlackTree<T extends Comparable<T>> {
 	 */
 	public boolean containsKey(Node<T> node, T key) {
 		if(node == null) {
-			throw new IllegalArgumentException("node passed in the method was null");
+			return false;
 		}
 		if(key == null) {
 			return false;
