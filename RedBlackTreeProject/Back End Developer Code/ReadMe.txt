@@ -334,19 +334,15 @@ public class RedBlackTree<T extends Comparable<T>> {
 			return false;
 		}
 		
-		Node currNode = root;
-		
-		while(currNode.leftChild != null || currNode.rightChild != null) {
-			if(currNode.equals(node)) {
-				return true;
-			}
+		while(node != null) {
 			if(key.compareTo(node.data) < 0) {
-				currNode = currNode.leftChild;
+				node = node.leftChild;
 				continue;
-			} else {
-				currNode = currNode.rightChild;
+			} if (key.compareTo(node.data) > 0) {
+				node = node.rightChild;
 				continue;
 			}
+				return true;
 		}
 		return false;
 
