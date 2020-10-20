@@ -1,5 +1,6 @@
 This file contains the code for the Back End Developers
 
+
 // --== CS400 File Header Information ==--
 // Name: Aaron Stephenson
 // Email: astephenson2@ewisc.edu
@@ -305,7 +306,7 @@ public class RedBlackTree<T extends Comparable<T>> {
 	/***
 	 * This method clears the tree of any data
 	 */
-	public void clear() {
+	public void clearTree() {
 		root = null;
 		this.size = 0;
 	}
@@ -366,21 +367,22 @@ public class RedBlackTree<T extends Comparable<T>> {
 			throw new IllegalArgumentException("The key entered was null");
 		}
 		
-		Node currNode = root;
 		
-		while(currNode.leftChild != null || currNode.rightChild != null) {
-			if(currNode.songName.equals(node.songName)) {
-				return currNode.songName;
-			}
+		while(node != null) {
 			if(key.compareTo(node.data) < 0) {
-				currNode = currNode.leftChild;
+				node = node.leftChild;
 				continue;
-			} else {
-				currNode = currNode.rightChild;
+			} if(key.compareTo(node.data) > 0) {
+				node = node.rightChild;
 				continue;
 			}
+			if(node.data.equals(node.data)) {
+				return node.songName;
+			}
+			
 		}
 		throw new NoSuchElementException("there is no node in the tree that contains that key");
 	}
 
 }
+
